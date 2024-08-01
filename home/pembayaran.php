@@ -1,54 +1,82 @@
 <?php
+session_start();
 include '../connection.php';
 
-session_start();
-
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-$username = $_SESSION['username'] ?? '';
-$phone = $_SESSION['phone'] ?? '';
-$email = $_SESSION['email'] ?? '';
+// Fetch user details from the database
+$user_id = $_SESSION['user_id'];
+$stmt = $conn->prepare("SELECT username, phone, email FROM users WHERE user_id = ?");
+$stmt->bind_param("s", $user_id);
+$stmt->execute();
+$stmt->bind_result($username, $phone, $email);
+$stmt->fetch();
+$stmt->close();
 
+// Initialize payment success flag
 $payment_success = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $alamat = $_POST['alamat'];
-    $kelas = $_POST['kelas'];
-    $bulan_pembayaran = $_POST['bulan_pembayaran'];
-    $tanggal_pembayaran = date('Y-m-d');
-    $jumlah_pembayaran = $_POST['jumlah_pembayaran'];
-    $metode_pembayaran = $_POST['metode_pembayaran'];
-    $bayar_id = uniqid();
+    // Sanitize and validate inputs
+    $alamat = htmlspecialchars(trim($_POST['alamat']));
+    $kelas = htmlspecialchars(trim($_POST['kelas']));
+    $bulan_pembayaran = htmlspecialchars(trim($_POST['bulan_pembayaran']));
+    $jumlah_pembayaran = filter_var($_POST['jumlah_pembayaran'], FILTER_VALIDATE_FLOAT);
+    $metode_pembayaran = htmlspecialchars(trim($_POST['metode_pembayaran']));
+    $bayar_id = uniqid('', true);
+    $tanggal_pembayaran = date('Y-m-d H:i:s'); // Get current date and time
 
+    // Validate jumlah_pembayaran
+    if ($jumlah_pembayaran === false) {
+        echo "Jumlah pembayaran tidak valid.";
+        exit();
+    }
+
+    // File upload handling
     $target_dir = "uploads/";
     if (!is_dir($target_dir)) {
-        mkdir($target_dir, 0777, true);
-    }
-    $target_file = $target_dir . basename($_FILES["bukti_pembayaran"]["name"]);
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    $check = getimagesize($_FILES["bukti_pembayaran"]["tmp_name"]);
-
-    if($check !== false && ($imageFileType == "jpg" || $imageFileType == "png")) {
-        if (move_uploaded_file($_FILES["bukti_pembayaran"]["tmp_name"], $target_file)) {
-            $sql = "INSERT INTO bayar (bayar_id, username, phone, email, alamat, kelas, bulan_pembayaran, tanggal_pembayaran, jumlah_pembayaran, metode_pembayaran, bukti_pembayaran) 
-                    VALUES ('$bayar_id', '$username', '$phone', '$email', '$alamat', '$kelas', '$bulan_pembayaran', '$tanggal_pembayaran', '$jumlah_pembayaran', '$metode_pembayaran', '$target_file')";
-
-            if (mysqli_query($conn, $sql)) {
-                $payment_success = true;
-            } else {
-                echo "Error: " . mysqli_error($conn);
-            }
-        } else {
-            echo "Error uploading file.";
+        if (!mkdir($target_dir, 0777, true)) {
+            echo "Gagal membuat direktori upload.";
+            exit();
         }
-    } else {
-        echo "File is not an image or not a valid format (JPG, PNG).";
     }
 
-    mysqli_close($conn);
+    $file_name = basename($_FILES["bukti_pembayaran"]["name"]);
+    $target_file = $target_dir . $file_name;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    $check = getimagesize($_FILES["bukti_pembayaran"]["tmp_name"]);
+    if ($check === false) {
+        echo "File bukan gambar.";
+        exit();
+    }
+
+    if (!in_array($imageFileType, ["jpg", "png"])) {
+        echo "Hanya file JPG dan PNG yang diperbolehkan.";
+        exit();
+    }
+
+    if (!move_uploaded_file($_FILES["bukti_pembayaran"]["tmp_name"], $target_file)) {
+        echo "Gagal mengunggah file.";
+        exit();
+    }
+
+    // Prepare SQL statement to prevent SQL injection
+    $stmt = $conn->prepare("INSERT INTO bayar (bayar_id, username, phone, email, alamat, kelas, bulan_pembayaran, tanggal_pembayaran, jumlah_pembayaran, metode_pembayaran, bukti_pembayaran) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssssssss", $bayar_id, $username, $phone, $email, $alamat, $kelas, $bulan_pembayaran, $tanggal_pembayaran, $jumlah_pembayaran, $metode_pembayaran, $target_file);
+
+    if ($stmt->execute()) {
+        $payment_success = true;
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>
 
@@ -205,7 +233,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     <div class="container">
         <h2>Bayar</h2>
-        <form id="paymentForm">
+        <form id="paymentForm" action="pembayaran.php" method="POST" enctype="multipart/form-data">
             <label>Username:</label>
             <input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>" class="readonly" readonly><br>
             <label>No Telpon:</label>
@@ -222,7 +250,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select><br>
             <label>Bulan Pembayaran:</label>
             <select name="bulan_pembayaran" required>
-                <option value="" disabled selected>Pilih Bulan</option>
+            <option value="" disabled selected>Pilih Bulan</option>
                 <option value="Januari">Januari</option>
                 <option value="Februari">Februari</option>
                 <option value="Maret">Maret</option>
@@ -258,10 +286,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="hidden" name="jumlah_pembayaran">
                 <label for="metode_pembayaran">Metode Pembayaran:</label>
                 <select name="metode_pembayaran" required>
-                    <option value="" disabled selected>Pilih Metode</option>
-                    <option value="BCA ()">BCA ()</option>
-                    <option value="MANDIRI ()">MANDIRI ()</option>
-                    <option value="BANK DKI ()">BANK DKI ()</option>
+                <option value="" disabled selected>Pilih Metode</option>
+                    <option value="BCA (214153542)">BCA (214153542)</option>
+                    <option value="MANDIRI (2423265458697)">MANDIRI (2423265458697)</option>
+                    <option value="BANK DKI (3005842644)">BANK DKI (3005842644)</option>
                 </select><br>
                 <label for="bukti_pembayaran">Unggah Bukti Pembayaran (JPG/PNG):</label>
                 <input type="file" name="bukti_pembayaran" required accept=".jpg, .jpeg, .png"><br>

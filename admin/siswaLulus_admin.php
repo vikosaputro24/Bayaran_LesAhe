@@ -98,6 +98,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="../home/wisuda_admin.php">Data Wisuda</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="./pengumuman.php">Pengumuman</a>
         </li>
         <li class="nav-item">

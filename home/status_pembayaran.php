@@ -9,18 +9,27 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Ambil data pengguna dari session
-$username = $_SESSION['username'] ?? '';
-$phone = $_SESSION['phone'] ?? '';
-$email = $_SESSION['email'] ?? '';
+// Ambil data pengguna dari database
+$user_id = $_SESSION['user_id'];
+$sql_user = "SELECT username, phone, email FROM users WHERE user_id = ?";
+$stmt = $conn->prepare($sql_user);
+$stmt->bind_param("s", $user_id);
+$stmt->execute();
+$stmt->bind_result($username, $phone, $email);
+$stmt->fetch();
+$stmt->close();
 
 // Query untuk mendapatkan bulan-bulan dan tanggal pembayaran
-$sql_bulan_bayar = "SELECT bulan_pembayaran, tanggal_pembayaran FROM bayar WHERE username = '$username'";
-$result_bulan_bayar = mysqli_query($conn, $sql_bulan_bayar);
+$sql_bulan_bayar = "SELECT bulan_pembayaran, tanggal_pembayaran FROM bayar WHERE username = ?";
+$stmt = $conn->prepare($sql_bulan_bayar);
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result_bulan_bayar = $stmt->get_result();
 $bulan_bayar = [];
-while ($row = mysqli_fetch_assoc($result_bulan_bayar)) {
+while ($row = $result_bulan_bayar->fetch_assoc()) {
     $bulan_bayar[$row['bulan_pembayaran']] = $row['tanggal_pembayaran'];
 }
+$stmt->close();
 
 // Daftar bulan yang tersedia
 $daftar_bulan = [

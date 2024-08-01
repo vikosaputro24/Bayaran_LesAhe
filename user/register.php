@@ -76,7 +76,7 @@ unset($_SESSION['registration_success']);
         <label for="phone" class="form-label">
           <i class="fa fa-phone me-2"></i>Nomor Telepon
         </label>
-        <input type="text" class="form-control" id="phone" name="phone" placeholder="Masukkan Nomor Telepon ..." required>
+        <input type="number" class="form-control" id="phone" name="phone" placeholder="Masukkan Nomor Telepon ..." required>
       </div>
       <div class="mb-3 position-relative">
         <label for="password" class="form-label d-flex justify-content-between align-items-center">

@@ -6,7 +6,7 @@ include '../connection.php';
 $user_id = $_SESSION['user_id']; // or however you retrieve the user_id
 
 // Fetch user details from the database
-$stmt = $conn->prepare("SELECT username, email FROM users WHERE user_id = ?");
+$stmt = $conn->prepare("SELECT username, email, phone FROM users WHERE user_id = ?");
 $stmt->bind_param("s", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -15,9 +15,11 @@ if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
     $username = $user['username'];
     $email = $user['email'];
+    $phone = $user['phone'];
 } else {
     $username = '';
     $email = '';
+    $phone = '';
 }
 
 $stmt->close();
@@ -33,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $phone = $_POST['phone'];
     $paket = $_POST['paket'];
     $metode_pembayaran = $_POST['metode_pembayaran'];
-    $jumlah_pembayaran = $_POST['jumlah_pembayaran'];
+    $jumlah_pembayaran = $_POST['jumlah_pembayaran']; // Get the payment amount
     $bukti_pembayaran = $_FILES['bukti_pembayaran'];
 
     // Validate the form data
@@ -102,22 +104,22 @@ $conn->close();
             <form action="" method="POST" enctype="multipart/form-data" id="paymentForm">
                 <div class="mb-3">
                     <label for="username" class="form-label">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Nama Lengkap ..." required value="<?php echo htmlspecialchars($username); ?>">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Nama Lengkap ..." disabled value="<?php echo htmlspecialchars($username); ?>">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email ..." required value="<?php echo htmlspecialchars($email); ?>">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email ..." disabled value="<?php echo htmlspecialchars($email); ?>">
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Nomor Telepon</label>
-                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Masukkan Nomor Telepon ..." required>
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Masukkan Nomor Telepon ..." disabled value="<?php echo htmlspecialchars($phone); ?>">
                 </div>
                 <div class="mb-3">
                     <label for="paket" class="form-label">Paket Wisuda</label>
                     <select class="form-select" id="paket" name="paket" required>
                         <option value="">Pilih Paket Wisuda</option>
-                        <option value="500000">Paket Wisuda Standard - Rp. 500,000</option>
-                        <option value="750000">Paket Wisuda Premium - Rp. 750,000</option>
+                        <option value="standard" data-harga="500000">Paket Wisuda Standard - Rp. 500,000</option>
+                        <option value="premium" data-harga="750000">Paket Wisuda Premium - Rp. 750,000</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -164,8 +166,9 @@ $conn->close();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.getElementById('paket').addEventListener('change', function() {
-            var paketValue = this.value;
-            document.getElementById('jumlah_pembayaran').value = paketValue;
+            var selectedOption = this.options[this.selectedIndex];
+            var harga = selectedOption.getAttribute('data-harga');
+            document.getElementById('jumlah_pembayaran').value = harga;
         });
 
         document.addEventListener('DOMContentLoaded', function() {

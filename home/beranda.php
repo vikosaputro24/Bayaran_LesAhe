@@ -43,7 +43,7 @@
                         <a class="dropdown-item" href="../user/profile.php">Profil</a>
                         <a class="dropdown-item" href="./status_pembayaran.php">Status Pembayaran</a>
                         <a class="dropdown-item" href="./siswa_lulus.php">Siswa Lulus</a>
-                        <a class="dropdown-item" href="../home/logout.php">Keluar</a>
+                        <a class="dropdown-item" href="./logout.php">Keluar</a>
                     </div>
                 </li>
             </ul>
