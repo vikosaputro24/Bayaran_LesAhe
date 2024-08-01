@@ -134,7 +134,7 @@ $conn->close();
                     <input type="number" class="form-control" id="jumlah_pembayaran" name="jumlah_pembayaran" placeholder="Total Pembayaran ..." readonly required>
                 </div>
                 <div class="mb-3">
-                    <label for="bukti_pembayaran" class="form-label">Upload Bukti Pembayaran</label>
+                    <label for="bukti_pembayaran" class="form-label">Upload Bukti Pembayaran (JPG/PNG)</label>
                     <input type="file" class="form-control" id="bukti_pembayaran" name="bukti_pembayaran" accept=".jpg, .jpeg, .png" required>
                 </div>
                 <div class="d-grid gap-2">
