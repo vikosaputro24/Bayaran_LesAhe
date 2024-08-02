@@ -73,6 +73,7 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,32 +88,35 @@ $conn->close();
             right: 20px;
             z-index: 1050;
         }
+
         .toast-success {
             background-color: #28a745;
             color: #fff;
         }
+
         .toast-danger {
             background-color: #dc3545;
             color: #fff;
         }
     </style>
 </head>
+
 <body style="font-family: 'Roboto', sans-serif; background-image: url('../assets/p.jpg'); background-size: cover; background-position: center; padding: 20px;">
     <div class="container">
         <div class="payment-form bg-light p-4 rounded shadow-sm max-width-600 mx-auto">
-            <h2 class="text-center mb-4">Form Pembayaran Wisuda</h2>
+            <h2 class="text-center mb-4">Ahe</h2>
             <form action="" method="POST" enctype="multipart/form-data" id="paymentForm">
                 <div class="mb-3">
                     <label for="username" class="form-label">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Nama Lengkap ..." disabled value="<?php echo htmlspecialchars($username); ?>">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Nama Lengkap ..." require value="<?php echo htmlspecialchars($username); ?>">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email ..." disabled value="<?php echo htmlspecialchars($email); ?>">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email ..." require value="<?php echo htmlspecialchars($email); ?>">
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Nomor Telepon</label>
-                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Masukkan Nomor Telepon ..." disabled value="<?php echo htmlspecialchars($phone); ?>">
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Masukkan Nomor Telepon ..." require value="<?php echo htmlspecialchars($phone); ?>">
                 </div>
                 <div class="mb-3">
                     <label for="paket" class="form-label">Paket Wisuda</label>
@@ -126,9 +130,9 @@ $conn->close();
                     <label for="metode_pembayaran" class="form-label">Metode Pembayaran</label>
                     <select class="form-select" id="metode_pembayaran" name="metode_pembayaran" required>
                         <option value="">Pilih Metode Pembayaran</option>
-                        <option value="transfer_bank">Transfer Bank</option>
-                        <option value="e-wallet">E-Wallet</option>
-                        <option value="tunai">Tunai</option>
+                        <option value="BCA (214153542)">BCA (214153542)</option>
+                        <option value="MANDIRI (2423265458697)">MANDIRI (2423265458697)</option>
+                        <option value="BANK DKI (3005842644)">BANK DKI (3005842644)</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -149,15 +153,15 @@ $conn->close();
 
     <!-- Success Message and Toast -->
     <div class="toast-container">
-        <?php if (!empty($toastMessage)): ?>
-        <div id="toast" class="toast align-items-center text-white <?php echo $toastClass; ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    <?php echo htmlspecialchars($toastMessage); ?>
+        <?php if (!empty($toastMessage)) : ?>
+            <div id="toast" class="toast align-items-center text-white <?php echo $toastClass; ?> border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <?php echo htmlspecialchars($toastMessage); ?>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-        </div>
         <?php endif; ?>
     </div>
 
@@ -180,4 +184,5 @@ $conn->close();
         });
     </script>
 </body>
+
 </html>

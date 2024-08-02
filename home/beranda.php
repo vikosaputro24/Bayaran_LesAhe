@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anak Hebat</title>
+    <title>Ahe</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-RlvE3NzMp+O8Jw+V2Cefw6Ht1PAd75c8ATx4pv3yEt5aNsefLOeFtLsW5GcK8u0keCZNP5tJFX0tW/aV7lBxtw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -12,7 +12,7 @@
 <body style="height: 100%; margin: 0; font-family: Arial, sans-serif;">
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #343a40;">
-        <a class="navbar-brand" href="#">Ahe.</a>
+        <a class="navbar-brand" href="#">Ahe</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,9 +59,16 @@
 
     <div class="about" style="padding: 50px 20px; text-align: center; background-color: white; border-bottom: 1px solid #ddd;">
         <img src="../assets/banner.jpg" alt="Profile Banner" style="max-width: 100%; height: auto; border-radius: 50%; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border: 5px solid #343a40;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #343a40;">Tentang Website Ini</h2>
-        <p style="font-size: 1.125rem; line-height: 1.8; color: #555; max-width: 800px; margin: 0 auto;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
-        <p style="font-size: 1.125rem; line-height: 1.8; color: #555; max-width: 800px; margin: 20px auto 0;">Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+        <h1 style="font-size: 2.5rem; margin-bottom: 20px; color: #343a40;">Tentang Website Ini</h1>
+        <p style="line-height: 1.8; color: black; max-width: 800px; margin: 0 auto;">Website ini merupakan sebuah website pembayaran dari les Anak Hebat dimana siswa atau siswi dapat melakukan pembayaran di website ini. Website ini bukan hanya untuk membayar spp saja namun dapat membayar paket wisuda ketika sudah lulus.</p>
+        <h5 style="margin-top: 20px; font-size: 1.25rem; color: #343a40;">VISI AHE</h5>
+        <p style="line-height: 1.8; color: black; max-width: 800px; margin: 0 auto;">Pada tahun 2025 menjadi Sekolah Baca dengan metode paling jitu yang melayani di 7000 desa dan atau kelurahan</p>
+        <h5 style="margin-top: 20px; font-size: 1.25rem; color: #343a40;">MISI AHE</h5>
+        <p style="line-height: 1.8; color: black; max-width: 800px; margin: 0 auto;">1. Menyediakan tempat belajar baca dengan metode yang asyik.</p>
+        <p style="line-height: 1.8; color: black; max-width: 800px; margin: 0 auto;">2. Membantu anak Indonesia supaya bisa membaca saat kelas satu sehingga mudah mengikuti pelajaran.</p>
+        <p style="line-height: 1.8; color: black; max-width: 800px; margin: 0 auto;">3. Membantu ibu rumah tangga terdidik supaya bermanfaat bagi lingkungannya melalui AHE.</p>
+        <p style="line-height: 1.8; color: black; max-width: 800px; margin: 0 auto;">4. Menambah penghasilan para guru TK & guru honorer MI/SD melalui AHE di rumahnya.</p>
+        <p style="line-height: 1.8; color: black; max-width: 800px; margin: 0 auto;">5. Menyediakan program belajar baca untuk lembaga bimbingan belajar yang telah berjalan.</p>
     </div>
 
     <footer class="bg-dark text-white" style="padding: 20px 0; text-align: center;">
@@ -70,22 +77,17 @@
                 <div class="col-md-4">
                     <h5 style="margin-bottom: 20px;">KONTAK</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@example.com" class="text-white">info@example.com</a></li>
-                        <li><i class="fas fa-phone"></i> <a href="tel:+123456789" class="text-white">+1 (234) 567-89</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+123456789" class="text-white">085691101993</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5 style="margin-bottom: 20px;">SOSIAL MEDIA</h5>
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-linkedin"></i></a></li>
-                    </ul>
+                    <h5 style="margin-bottom: 20px;">MEDIA SOSIAL</h5>
+                    <p><a href="https://www.instagram.com/aherancagong_lesbaca?igsh=MWlqaXg3d2UwNnFmaQ==">INSTAGRAM</a></p>
+                    <p><a href="https://m.facebook.com/titik.atikah.79/">FACEBOOK</a></p>
                 </div>
                 <div class="col-md-4">
                     <h5 style="margin-bottom: 20px;">ALAMAT</h5>
-                    <p>123 Street, City, Country</p>
+                    <p>Perum Griya Curug Blok E2 no 9, Rancagong, Legok</p>
                 </div>
             </div>
             <hr>

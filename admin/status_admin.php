@@ -46,41 +46,38 @@ $daftar_bulan = [
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
-  <!-- Bootstrap CSS -->
+  <title>Ahe</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles -->
   <style>
             .detail-table {
             display: none;
         }
         .status-sudah {
-            background-color: #d4edda; /* Hijau */
+            background-color: #d4edda;
         }
         .status-belum {
-            background-color: #f8d7da; /* Merah */
+            background-color: #f8d7da;
         }
         
     .navbar-brand {
-      font-size: 1.5rem; /* Ukuran teks navbar brand */
+      font-size: 1.5rem; 
     }
 
     .navbar-nav .nav-link {
-      font-size: 1.2rem; /* Ukuran teks link navbar */
+      font-size: 1.2rem; 
     }
 
-    /* CSS untuk tengah layar */
     .center-screen {
-      height: 100vh; /* Set tinggi 100% dari viewport */
-      display: flex; /* Gunakan flexbox */
-      justify-content: center; /* Posisikan konten secara horizontal di tengah */
-      align-items: center; /* Posisikan konten secara vertikal di tengah */
+      height: 100vh; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
     }
   </style>
 </head>
 <body class="bg-secondary">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Anak Hebat</a>
+    <a class="navbar-brand" href="#">Ahe</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -113,7 +110,6 @@ $daftar_bulan = [
         <li class="nav-item">
           <a class="nav-link" href="./penilaian_admin.php">Penilaian</a>
         </li>
-        <!-- Add more menu items as needed -->
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">

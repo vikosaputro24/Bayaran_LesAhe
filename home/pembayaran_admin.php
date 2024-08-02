@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
-  <!-- Bootstrap CSS -->
+  <title>Ahe</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles -->
   <style>
-
     .navbar-brand {
-      font-size: 1.5rem; /* Ukuran teks navbar brand */
+      font-size: 1.5rem;
     }
 
     .navbar-nav .nav-link {
-      font-size: 1.2rem; /* Ukuran teks link navbar */
+      font-size: 1.2rem;
     }
 
-    /* CSS untuk tengah layar */
     .center-screen {
-      height: 100vh; /* Set tinggi 100% dari viewport */
-      display: flex; /* Gunakan flexbox */
-      justify-content: center; /* Posisikan konten secara horizontal di tengah */
-      align-items: center; /* Posisikan konten secara vertikal di tengah */
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 </head>
+
 <body class="bg-white">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Anak Hebat</a>
@@ -39,7 +37,7 @@
           <a class="nav-link" href="../admin/beranda.php">Beranda <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../admin/registrasi_user.php">Data Pengguna</a>
+          <a class="nav-link" href="../admin/registrasi_user.php">Data Pengguna</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,15 +51,14 @@
           </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../home/wisuda_admin.php">Data Wisuda</a>
+          <a class="nav-link" href="../home/wisuda_admin.php">Data Wisuda</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="./pengumuman.php">Pengumuman</a>
+          <a class="nav-link" href="./pengumuman.php">Pengumuman</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../admin/penilaian_admin.php">Penilaian</a>
         </li>
-        <!-- Add more menu items as needed -->
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -70,24 +67,24 @@
       </ul>
     </div>
   </nav>
-<div class="container mt-5">
-  <h2>Riwayat Pembayaran</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Nama</th>
-        <th>Nomor Telepon</th>
-        <th>Email</th>
-        <th>Alamat</th>
-        <th>Kelas</th>
-        <th>Bulan Pembayaran</th>
-        <th>Jumlah Pembayaran</th>
-        <th>Metode Pembayaran</th>
-        <th>Aksi</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
+  <div class="container mt-5">
+    <h2>Riwayat Pembayaran</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Nomor Telepon</th>
+          <th>Email</th>
+          <th>Alamat</th>
+          <th>Kelas</th>
+          <th>Bulan Pembayaran</th>
+          <th>Jumlah Pembayaran</th>
+          <th>Metode Pembayaran</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
         session_start();
         include '../connection.php';
 
@@ -241,33 +238,33 @@
         }
 
         $conn->close();
-      ?>
-    </tbody>
-  </table>
-
-  <h3>Total Pembayaran per Bulan</h3>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Bulan</th>
-        <th>Total Pembayaran</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
+        ?>
+      </tbody>
+    </table>
+    <h3>Total Pembayaran per Bulan</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Bulan</th>
+          <th>Total Pembayaran</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
         foreach ($totalPerBulan as $bulan => $total) {
           echo "<tr>";
           echo "<td>{$bulan}</td>";
           echo "<td>{$total}</td>";
           echo "</tr>";
         }
-      ?>
-    </tbody>
-  </table>
-</div>
+        ?>
+      </tbody>
+    </table>
+  </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

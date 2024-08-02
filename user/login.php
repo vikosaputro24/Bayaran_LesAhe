@@ -40,9 +40,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anak Hebat</title>
+  <title>Ahe</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <style>
+    .password-toggle-icon {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      cursor: pointer;
+      display: none;
+    }
+  </style>
 </head>
 <body class="d-flex align-items-center justify-content-center vh-100" style="background-image: url('../assets/p.jpg'); background-size: cover; background-position: center;">
   <div class="card shadow p-4" style="max-width: 400px; width: 100%; border-radius: 10px; background: rgba(255, 255, 255, 0.9);">
@@ -61,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </label>
         <div class="position-relative">
           <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Kata Sandi ..." required>
-          <i class="fa fa-eye position-absolute" id="togglePassword" style="top: 12px; right: 15px; cursor: pointer;"></i>
+          <i class="fa fa-eye password-toggle-icon" id="togglePassword"></i>
         </div>
       </div>
       <button type="submit" class="btn btn-primary w-100">Masuk</button>
@@ -84,8 +93,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    document.getElementById('togglePassword').addEventListener('click', function () {
-      const passwordField = document.getElementById('password');
+    const passwordField = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
+
+    passwordField.addEventListener('input', function () {
+      togglePassword.style.display = passwordField.value ? 'block' : 'none';
+    });
+
+    togglePassword.addEventListener('click', function () {
       const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
       passwordField.setAttribute('type', type);
       this.classList.toggle('fa-eye');

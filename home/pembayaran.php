@@ -2,13 +2,11 @@
 session_start();
 include '../connection.php';
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// Fetch user details from the database
 $user_id = $_SESSION['user_id'];
 $stmt = $conn->prepare("SELECT username, phone, email FROM users WHERE user_id = ?");
 $stmt->bind_param("s", $user_id);
@@ -17,7 +15,6 @@ $stmt->bind_result($username, $phone, $email);
 $stmt->fetch();
 $stmt->close();
 
-// Initialize payment success flag
 $payment_success = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -28,15 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $jumlah_pembayaran = filter_var($_POST['jumlah_pembayaran'], FILTER_VALIDATE_FLOAT);
     $metode_pembayaran = htmlspecialchars(trim($_POST['metode_pembayaran']));
     $bayar_id = uniqid('', true);
-    $tanggal_pembayaran = date('Y-m-d H:i:s'); // Get current date and time
+    $tanggal_pembayaran = date('Y-m-d H:i:s');
 
-    // Validate jumlah_pembayaran
     if ($jumlah_pembayaran === false) {
         echo "Jumlah pembayaran tidak valid.";
         exit();
     }
 
-    // File upload handling
     $target_dir = "uploads/";
     if (!is_dir($target_dir)) {
         if (!mkdir($target_dir, 0777, true)) {
@@ -65,7 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Prepare SQL statement to prevent SQL injection
     $stmt = $conn->prepare("INSERT INTO bayar (bayar_id, username, phone, email, alamat, kelas, bulan_pembayaran, tanggal_pembayaran, jumlah_pembayaran, metode_pembayaran, bukti_pembayaran) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("sssssssssss", $bayar_id, $username, $phone, $email, $alamat, $kelas, $bulan_pembayaran, $tanggal_pembayaran, $jumlah_pembayaran, $metode_pembayaran, $target_file);
 
@@ -83,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bayar</title>
+    <title>Ahe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
@@ -102,10 +96,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 90%; /* Menggunakan persentase agar bisa responsif */
+            width: 90%; 
             max-width: 500px;
             overflow: hidden;
-            margin: auto; /* Untuk membuat konten berada di tengah */
+            margin: auto; 
         }
         h2 {
             text-align: center;
@@ -121,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         input[type="number"],
         textarea,
         select {
-            width: calc(100% - 20px); /* Adjusting width for padding */
+            width: calc(100% - 20px); 
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
