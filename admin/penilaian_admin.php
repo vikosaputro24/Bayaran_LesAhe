@@ -108,15 +108,15 @@ $result = $conn->query($sql);
 </head>
 <body class="bg-secondary">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Ahe</a>
+    <a class="navbar-brand" href="#">Anak Hebat</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="./beranda.php">Beranda <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="./beranda.php">Beranda</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="./registrasi_user.php">Data Pengguna</a>
@@ -138,8 +138,8 @@ $result = $conn->query($sql);
         <li class="nav-item">
             <a class="nav-link" href="./pengumuman.php">Pengumuman</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./penilaian_admin.php">Penilaian</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="./penilaian_admin.php">Penilaian <span class="sr-only">(current)</span></a>
         </li>
         <!-- Add more menu items as needed -->
       </ul>

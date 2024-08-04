@@ -15,15 +15,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="./beranda.php">Beranda <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="./beranda.php">Beranda</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="./registrasi_user.php">Data Pengguna</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Data Siswa
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Data Siswa <span class="sr-only">(current)</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="../home/pembayaran_admin.php">Riwayat Pembayaran</a>

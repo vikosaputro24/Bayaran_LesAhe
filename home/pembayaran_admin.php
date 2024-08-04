@@ -33,20 +33,20 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="../admin/beranda.php">Beranda <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="../admin/beranda.php">Beranda</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../admin/registrasi_user.php">Data Pengguna</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Data Siswa
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Data Siswa <span class="sr-only">(current)</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="./pembayaran_admin.php">Riwayat Pembayaran</a>
             <a class="dropdown-item" href="../admin/status_admin.php">Status Pembayaran</a>
-            <a class="dropdown-item" href="../admin/siswa_lulus.php">Siswa Lulus</a>
+            <a class="dropdown-item" href="../admin/siswaLulus_admin.php">Siswa Lulus</a>
             <a class="dropdown-item" href="../admin/omset.php">Pemasukan</a>
           </div>
         </li>

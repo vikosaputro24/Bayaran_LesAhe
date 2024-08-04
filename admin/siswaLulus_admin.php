@@ -61,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         .navbar-brand {
             color: #fff;
-            font-weight: bold;
         }
         .navbar-nav .nav-link {
             color: #fff;
@@ -73,27 +72,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Ahe</a>
+    <a class="navbar-brand" href="#">Anak Hebat</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="./beranda.php">Beranda <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="./beranda.php">Beranda</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="./registrasi_user.php">Data Pengguna</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Data Siswa
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Data Siswa <span class="sr-only">(current)</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="../home/pembayaran_admin.php">Riwayat Pembayaran</a>
             <a class="dropdown-item" href="./status_admin.php">Status Pembayaran</a>
-            <a class="dropdown-item" href="./siswaLulus_admin.php">Siswa Lulus</a>
+            <a class="dropdown-item" href="./siswaLulus_admin.php">Siswa Lulus </a>
             <a class="dropdown-item" href="./omset.php">Pemasukan</a>
           </div>
         </li>
