@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f7fafc;
+            background-color: gray;
         }
         .container {
             max-width: 400px;
@@ -44,14 +44,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body class="flex items-center justify-center min-h-screen">
     <div class="container bg-white shadow-lg rounded-lg p-8">
-        <h2 class="text-2xl font-bold mb-6 text-center">Admin Login</h2>
+        <h2 class="text-2xl font-bold mb-6 text-center">Masuk Admin</h2>
         <form action="login.php" method="post">
             <div class="mb-4">
-                <label for="adminname" class="block text-sm font-medium text-gray-700">Admin Name</label>
+                <label for="adminname" class="block text-sm font-medium text-gray-700">Nama</label>
                 <input type="text" id="adminname" name="adminname" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
             </div>
             <div class="mb-4">
-                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <label for="password" class="block text-sm font-medium text-gray-700">Kata Sandi</label>
                 <input type="password" id="password" name="password" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
             </div>
             <div class="mt-6">

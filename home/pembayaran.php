@@ -271,7 +271,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span class="close" onclick="closeModal()">&times;</span>
             <h2>Konfirmasi Pembayaran</h2>
             <p>Total Pembayaran: <span id="totalBayar"></span></p>
-            <img id="bukti_pembayaran_modal" class="thumbnail" src="" onclick="openImageModal()" alt="Bukti Pembayaran">
             <form id="modalForm" action="pembayaran.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="phone" value="<?php echo htmlspecialchars($phone); ?>">
                 <input type="hidden" name="alamat">
