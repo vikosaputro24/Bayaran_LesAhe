@@ -126,7 +126,7 @@ $conn->close();
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="../home/pembayaran_admin.php">Riwayat Pembayaran</a>
-            <a class="dropdown-item" href="../admin/statusAdmin.php">Status Pembayaran</a>
+            <a class="dropdown-item" href="../admin/status_admin.php">Status Pembayaran</a>
             <a class="dropdown-item" href="./siswaLulus_admin.php">Siswa Lulus</a>
             <a class="dropdown-item" href="../admin/omset.php">Pemasukan</a>
           </div>

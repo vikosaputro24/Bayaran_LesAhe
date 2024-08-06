@@ -2,13 +2,18 @@
 session_start();
 include '../connection.php';
 
-$sql = "SELECT username FROM users LIMIT 1";
-$result = $conn->query($sql);
-$userName = "";
-if ($result->num_rows > 0) {
-  $row = $result->fetch_assoc();
-  $userName = $row["username"];
+if (!isset($_SESSION['user_id'])) {
+  header("Location: login.php");
+  exit();
 }
+
+$user_id = $_SESSION['user_id'];
+$stmt = $conn->prepare("SELECT username FROM users WHERE user_id = ?");
+$stmt->bind_param("s", $user_id);
+$stmt->execute();
+$stmt->bind_result($username);
+$stmt->fetch();
+$stmt->close();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $username = $userName;
@@ -84,9 +89,9 @@ $conn->close();
     </div>
 
     <form id="ratingForm" method="post" action="">
-      <div class="form-group">
-        <label for="userName">Nama</label>
-        <input type="text" class="form-control" name="username" id="username" value="<?= htmlspecialchars($userName); ?>" readonly>
+    <div class="form-group">
+        <label for="username">Nama</label>
+        <input type="text" class="form-control" name="username" id="username" value="<?php echo htmlspecialchars($username); ?>" readonly>
       </div>
       <div class="form-group">
         <label for="userRating">Rating</label>
